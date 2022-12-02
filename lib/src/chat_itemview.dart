@@ -89,8 +89,9 @@ class ChatItemView extends StatefulWidget {
   // final Subject<MsgStreamEv<int>> downloadProgressSubject;
 
   /// Style of text content
-  /// 文字消息的样式
-  final TextStyle? textStyle;
+  /// 文字消息的样式，只针对文本消息，其他消息默认采用rightTextStyle
+  final TextStyle? rightTextStyle;
+  final TextStyle? leftTextStyle;
 
   final double textScaleFactor;
 
@@ -292,7 +293,8 @@ class ChatItemView extends StatefulWidget {
     this.menuStyle,
     this.padding,
     this.margin,
-    this.textStyle,
+    this.rightTextStyle,
+    this.leftTextStyle,
     this.atTextStyle,
     this.timeStyle,
     this.hintTextStyle,
@@ -462,7 +464,7 @@ class _ChatItemViewState extends State<ChatItemView> {
             child = _buildCommonItemView(
               child: ChatAtText(
                 text: widget.message.content!,
-                textStyle: widget.textStyle,
+                textStyle: _isFromMsg ? widget.leftTextStyle : widget.rightTextStyle,
                 textScaleFactor: widget.textScaleFactor,
                 patterns: widget.patterns,
               ),
@@ -477,7 +479,7 @@ class _ChatItemViewState extends State<ChatItemView> {
               child: ChatAtText(
                 text: text,
                 allAtMap: widget.allAtMap,
-                textStyle: widget.textStyle,
+                textStyle: _isFromMsg ? widget.leftTextStyle : widget.rightTextStyle,
                 textScaleFactor: widget.textScaleFactor,
                 patterns: widget.patterns,
               ),
@@ -582,7 +584,7 @@ class _ChatItemViewState extends State<ChatItemView> {
               child: ChatAtText(
                 text: widget.message.quoteElem?.text ?? '',
                 allAtMap: widget.allAtMap,
-                textStyle: widget.textStyle,
+                textStyle: widget.rightTextStyle,
                 textScaleFactor: widget.textScaleFactor,
                 patterns: widget.patterns,
               ),
@@ -641,7 +643,7 @@ class _ChatItemViewState extends State<ChatItemView> {
                   ) ??
                   ChatAtText(
                     text: UILocalizations.unsupportedMessage,
-                    textStyle: widget.textStyle,
+                    textStyle: widget.rightTextStyle,
                     textScaleFactor: widget.textScaleFactor,
                   ),
             );
@@ -660,7 +662,7 @@ class _ChatItemViewState extends State<ChatItemView> {
                 textAlign: null != text ? TextAlign.center : TextAlign.left,
                 textStyle: null != text
                     ? widget.hintTextStyle ?? _hintTextStyle
-                    : widget.textStyle,
+                    : widget.rightTextStyle,
                 textScaleFactor: null != text ? 1.0 : widget.textScaleFactor,
               ),
             );
@@ -672,7 +674,7 @@ class _ChatItemViewState extends State<ChatItemView> {
       child = _buildCommonItemView(
         child: ChatAtText(
           text: UILocalizations.unsupportedMessage,
-          textStyle: widget.textStyle,
+          textStyle: widget.rightTextStyle,
           textScaleFactor: widget.textScaleFactor,
         ),
       );
@@ -867,13 +869,13 @@ class _ChatItemViewState extends State<ChatItemView> {
             children: [
               ChatAtText(
                 text: UILocalizations.groupNotice,
-                textStyle: widget.textStyle,
+                textStyle: widget.rightTextStyle,
                 textScaleFactor: widget.textScaleFactor,
                 patterns: widget.patterns,
               ),
               ChatAtText(
                 text: notification.group!.notification!,
-                textStyle: widget.textStyle,
+                textStyle: widget.rightTextStyle,
                 textScaleFactor: widget.textScaleFactor,
                 patterns: widget.patterns,
               )

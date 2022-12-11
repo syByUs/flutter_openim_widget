@@ -584,7 +584,7 @@ class _ChatItemViewState extends State<ChatItemView> {
               child: ChatAtText(
                 text: widget.message.quoteElem?.text ?? '',
                 allAtMap: widget.allAtMap,
-                textStyle: widget.rightTextStyle,
+                textStyle: _isFromMsg ? widget.leftTextStyle : widget.rightTextStyle,
                 textScaleFactor: widget.textScaleFactor,
                 patterns: widget.patterns,
               ),

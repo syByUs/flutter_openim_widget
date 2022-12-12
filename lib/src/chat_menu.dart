@@ -20,6 +20,7 @@ class MenuInfo {
 }
 
 class MenuStyle {
+  final EdgeInsets padding;
   final int crossAxisCount;
   final double mainAxisSpacing;
   final double crossAxisSpacing;
@@ -32,6 +33,7 @@ class MenuStyle {
     required this.crossAxisSpacing,
     required this.background,
     required this.radius,
+    required this.padding,
   });
 
   const MenuStyle.base()
@@ -39,7 +41,8 @@ class MenuStyle {
         mainAxisSpacing = 10,
         crossAxisSpacing = 10,
         background = const Color(0xFF666666),
-        radius = 4;
+        radius = 4,
+        padding = EdgeInsets.zero;
 }
 
 class ChatLongPressMenu extends StatelessWidget {
@@ -57,6 +60,7 @@ class ChatLongPressMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: menuStyle.padding,
       decoration: BoxDecoration(
         color: menuStyle.background,
         borderRadius: BorderRadius.circular(menuStyle.radius),
@@ -88,13 +92,14 @@ class ChatLongPressMenu extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: subList
-            .map((e) => _menuItem(
-                  icon: e.icon,
-                  label: e.text,
-                  onTap: e.onTap,
-                  style: e.textStyle ??
-                      TextStyle(fontSize: 10.sp, color: Color(0xFFFFFFFF)),
-                ))
+            .map((e) =>
+            _menuItem(
+              icon: e.icon,
+              label: e.text,
+              onTap: e.onTap,
+              style: e.textStyle ??
+                  TextStyle(fontSize: 10.sp, color: Color(0xFFFFFFFF)),
+            ))
             .toList(),
       ));
     }

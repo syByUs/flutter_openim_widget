@@ -743,6 +743,7 @@ class _ChatItemViewState extends State<ChatItemView> {
               crossAxisSpacing: 12.h,
               radius: 4,
               background: const Color(0xFF666666),
+              padding: EdgeInsets.zero,
             ),
       );
 

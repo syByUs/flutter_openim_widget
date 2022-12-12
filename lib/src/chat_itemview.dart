@@ -379,8 +379,7 @@ class _ChatItemViewState extends State<ChatItemView> {
   void initState() {
     var keyboardVisibilityCtrl = KeyboardVisibilityController();
     // Query
-    print(
-        'Keyboard visibility direct query: ${keyboardVisibilityCtrl.isVisible}');
+    print('Keyboard visibility direct query: ${keyboardVisibilityCtrl.isVisible}');
 
     // Subscribe
     _keyboardSubs = keyboardVisibilityCtrl.onChange.listen((bool visible) {
@@ -660,9 +659,7 @@ class _ChatItemViewState extends State<ChatItemView> {
               child: ChatAtText(
                 text: text ?? UILocalizations.unsupportedMessage,
                 textAlign: null != text ? TextAlign.center : TextAlign.left,
-                textStyle: null != text
-                    ? widget.hintTextStyle ?? _hintTextStyle
-                    : widget.rightTextStyle,
+                textStyle: null != text ? widget.hintTextStyle ?? _hintTextStyle : widget.rightTextStyle,
                 textScaleFactor: null != text ? 1.0 : widget.textScaleFactor,
               ),
             );
@@ -738,13 +735,12 @@ class _ChatItemViewState extends State<ChatItemView> {
         menus: widget.menus ?? _menusItem(),
         menuStyle: widget.menuStyle ??
             MenuStyle(
-              crossAxisCount: 4,
-              mainAxisSpacing: 13.w,
-              crossAxisSpacing: 12.h,
-              radius: 4,
-              background: const Color(0xFF666666),
-              padding: EdgeInsets.zero,
-            ),
+                crossAxisCount: 5,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                radius: 8,
+                background: const Color(0xFF333333),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10)),
       );
 
   Widget? _customItemView() => widget.customItemBuilder?.call(
@@ -862,8 +858,7 @@ class _ChatItemViewState extends State<ChatItemView> {
       final elem = widget.message.notificationElem!;
       final map = json.decode(elem.detail!);
       final notification = GroupNotification.fromJson(map);
-      if (notification.group?.notification != null &&
-          notification.group!.notification!.trim().isNotEmpty) {
+      if (notification.group?.notification != null && notification.group!.notification!.trim().isNotEmpty) {
         return _buildCommonItemView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -888,16 +883,11 @@ class _ChatItemViewState extends State<ChatItemView> {
     return null;
   }
 
-  String get _who =>
-      _isFromMsg ? widget.message.senderNickname ?? '' : UILocalizations.you;
+  String get _who => _isFromMsg ? widget.message.senderNickname ?? '' : UILocalizations.you;
 
-  int get _haveReadCount =>
-      widget.message.attachedInfoElem?.groupHasReadInfo?.hasReadUserIDList
-          ?.length ??
-      0;
+  int get _haveReadCount => widget.message.attachedInfoElem?.groupHasReadInfo?.hasReadUserIDList?.length ?? 0;
 
-  int get _needReadCount =>
-      widget.message.attachedInfoElem?.groupHasReadInfo?.groupMemberCount ?? 0;
+  int get _needReadCount => widget.message.attachedInfoElem?.groupHasReadInfo?.groupMemberCount ?? 0;
 
   bool get _haveUsableMenu =>
       widget.enabledCopyMenu ||

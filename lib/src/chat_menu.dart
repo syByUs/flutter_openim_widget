@@ -37,12 +37,12 @@ class MenuStyle {
   });
 
   const MenuStyle.base()
-      : crossAxisCount = 4,
-        mainAxisSpacing = 10,
-        crossAxisSpacing = 10,
-        background = const Color(0xFF666666),
-        radius = 4,
-        padding = EdgeInsets.zero;
+      : crossAxisCount = 5,
+        mainAxisSpacing = 20,
+        crossAxisSpacing = 20,
+        background = const Color(0xFF333333),
+        radius = 8,
+        padding = const EdgeInsets.symmetric(horizontal: 15, vertical: 10);
 }
 
 class ChatLongPressMenu extends StatelessWidget {

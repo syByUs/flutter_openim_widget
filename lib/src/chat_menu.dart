@@ -98,7 +98,7 @@ class ChatLongPressMenu extends StatelessWidget {
               label: e.text,
               onTap: e.onTap,
               style: e.textStyle ??
-                  TextStyle(fontSize: 10.sp, color: Color(0xFFFFFFFF)),
+                  TextStyle(fontSize: 12.sp, color: Color(0xFFFFFFFF)),
             ))
             .toList(),
       ));

@@ -314,7 +314,6 @@ class ChatPicturePreview extends StatelessWidget {
         child: PhotoViewGallery.builder(
           scrollPhysics: const BouncingScrollPhysics(),
           builder: (BuildContext context, int index) {
-            // return  Image(image:_provider(index)!);
             return PhotoViewGalleryPageOptions(
               imageProvider: _provider(index),
               initialScale: PhotoViewComputedScale.contained /** 0.8*/,
@@ -323,8 +322,9 @@ class ChatPicturePreview extends StatelessWidget {
               onTapDown: (BuildContext context,
                   TapDownDetails details,
                   PhotoViewControllerValue controllerValue,) {
-                print(controllerValue.toString());
-                print(details.toString());
+                // print(controllerValue.toString());
+                // print(details.toString());
+                Navigator.pop(context);
               }
             );
           },

@@ -320,6 +320,12 @@ class ChatPicturePreview extends StatelessWidget {
               initialScale: PhotoViewComputedScale.contained /** 0.8*/,
               // heroAttributes: _heroTag(index),
               errorBuilder: (context, error, stackTrace) => _buildErrorView(),
+              onTapDown: (BuildContext context,
+                  TapDownDetails details,
+                  PhotoViewControllerValue controllerValue,) {
+                print(controllerValue.toString());
+                print(details.toString());
+              }
             );
           },
           itemCount: picList.length,

@@ -266,13 +266,13 @@ class ChatPicturePreview extends StatelessWidget {
       children: [
         _buildPageView(),
         _buildBackBtn(onTap: () => Navigator.pop(context)),
-        _buildToolsBtn(onDownload: () {
-          int index = controller.page?.toInt() ?? 0;
-          if (index < picList.length) {
-            _startDownload(index);
-            // onDownload?.call(picList.elementAt(index).url!);
-          }
-        }),
+        // _buildToolsBtn(onDownload: () {
+        //   int index = controller.page?.toInt() ?? 0;
+        //   if (index < picList.length) {
+        //     _startDownload(index);
+        //     // onDownload?.call(picList.elementAt(index).url!);
+        //   }
+        // }),
       ],
     );
     return Material(

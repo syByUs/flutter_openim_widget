@@ -14,6 +14,7 @@ class ChatTextField extends StatelessWidget {
   final TextStyle? atStyle;
   final List<TextInputFormatter>? inputFormatters;
   final bool enabled;
+  final EdgeInsetsGeometry? contentPadding;
 
   const ChatTextField({
     Key? key,
@@ -26,6 +27,7 @@ class ChatTextField extends StatelessWidget {
     this.atStyle,
     this.inputFormatters,
     this.enabled = true,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -50,7 +52,7 @@ class ChatTextField extends StatelessWidget {
         border: InputBorder.none,
         isDense: true,
         // contentPadding: EdgeInsets.zero,
-        contentPadding: EdgeInsets.symmetric(
+        contentPadding: contentPadding ?? EdgeInsets.symmetric(
           horizontal: 4.w,
           vertical: 8.h,
         ),

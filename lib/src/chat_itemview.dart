@@ -822,7 +822,7 @@ class _ChatItemViewState extends State<ChatItemView> {
       ];
 
   static var menuTextStyle = TextStyle(
-    fontSize: 12.sp,
+    fontSize: 13.sp,
     color: Color(0xFFFFFFFF),
   );
 

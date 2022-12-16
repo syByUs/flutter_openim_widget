@@ -90,7 +90,7 @@ class UILocalizations {
       'copy': '复制',
       "delete": "删除",
       "forward": "转发",
-      "reply": "回复",
+      "reply": "引用",
       "revoke": "撤回",
       "multiChoice": "多选",
       "translation": "翻译",

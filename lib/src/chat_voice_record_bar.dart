@@ -72,14 +72,14 @@ class _ChatVoiceRecordBarState extends State<ChatVoiceRecordBar> {
           color: (widget.speakBarColor ?? const Color(0xFF1D6BED))
               .withOpacity(_pressing ? 0.3 : 1),
           borderRadius: BorderRadius.circular(4),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFF000000).withOpacity(0.12),
-              offset: Offset(0, -1),
-              blurRadius: 4,
-              spreadRadius: 0,
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Color(0xFF000000).withOpacity(0.12),
+          //     offset: Offset(0, -1),
+          //     blurRadius: 4,
+          //     spreadRadius: 0,
+          //   ),
+          // ],
         ),
         child: Text(
           _pressing ? UILocalizations.releaseSend : UILocalizations.pressSpeak,

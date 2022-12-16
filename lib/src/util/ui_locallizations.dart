@@ -95,7 +95,7 @@ class UILocalizations {
       "multiChoice": "多选",
       "translation": "翻译",
       "download": "下载",
-      "pressSpeak": "按住说话",
+      "pressSpeak": "按住 说话",
       "releaseSend": "松开发送",
       "releaseCancel": "松开取消",
       "soundToWord": "转文字",

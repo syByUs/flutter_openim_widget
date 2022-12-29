@@ -32,6 +32,7 @@ class ChatAvatarView extends StatelessWidget {
     this.nineGridUrls = const [],
     this.isUserGroup = false,
     this.color,
+    this.iconData,
   }) : super(key: key);
   final bool visible;
   final double? size;
@@ -53,10 +54,11 @@ class ChatAvatarView extends StatelessWidget {
   /// 群头像
   final bool isUserGroup;
 
+  final IconData? iconData;
+
   double get _size => size ?? 42.h;
 
-  TextStyle get _style =>
-      textStyle ?? TextStyle(fontSize: 14.sp, color: Colors.white);
+  TextStyle get _style => textStyle ?? TextStyle(fontSize: 14.sp, color: Colors.white);
 
   Color get _defaultAvatarBgColor => color ?? const Color(0xFF5496EB);
 
@@ -67,8 +69,7 @@ class ChatAvatarView extends StatelessWidget {
     var child = InkWell(
       onTap: onTap,
       onLongPress: onLongPress,
-      child:
-          builder?.call() ?? (isNineGrid ? _nineGridAvatar() : _normalAvatar()),
+      child: builder?.call() ?? (isNineGrid ? _nineGridAvatar() : _normalAvatar()),
     );
     return Visibility(
       visible: visible,
@@ -83,9 +84,7 @@ class ChatAvatarView extends StatelessWidget {
 
   Widget _normalAvatar() => _avatarView();
 
-  Widget _avatarView() => null == url || url!.isEmpty
-      ? _defaultAvatar()
-      : (_isIndexAvatar() ? _indexAvatar() : _networkImage());
+  Widget _avatarView() => null == url || url!.isEmpty ? _defaultAvatar() : (_isIndexAvatar() ? _indexAvatar() : _networkImage());
 
   Widget _indexAvatar() => Container(
         width: _size,
@@ -97,13 +96,13 @@ class ChatAvatarView extends StatelessWidget {
         color: _defaultAvatarBgColor,
         child: isUserGroup
             ? FaIcon(
-                FontAwesomeIcons.userGroup,
+                iconData ?? FontAwesomeIcons.userGroup,
                 color: Colors.white,
                 size: _size - (_size / 2),
               )
             : null == text
                 ? FaIcon(
-                    FontAwesomeIcons.solidUser,
+                    iconData ?? FontAwesomeIcons.solidUser,
                     color: Colors.white,
                     size: _size - (_size / 2),
                   )

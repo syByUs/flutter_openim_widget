@@ -429,7 +429,7 @@ class ChatSingleLayout extends StatelessWidget {
 
   /// 读状态
   List<Widget> _getReadStatusView() => [
-        if (_showSingleChatReadStatus) _buildReadStatusView(),
-        if (_showGroupChatReadStatus) _buildGroupReadStatusView(),
+        if (_showSingleChatReadStatus && !isHintMsg) _buildReadStatusView(),
+        if (_showGroupChatReadStatus && !isHintMsg) _buildGroupReadStatusView(),
       ];
 }

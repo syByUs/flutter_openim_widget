@@ -29,9 +29,7 @@ class ChatLocationView extends StatelessWidget {
       addr = map['addr'];
       return Container(
         width: 200.w,
-        // height: 124.h,
-        color: Color(0xFFF0F0F0),
-        padding: EdgeInsets.symmetric(horizontal: 1, vertical: 1),
+        color: Colors.white,
         child: Column(
           children: [
             Row(
@@ -39,10 +37,7 @@ class ChatLocationView extends StatelessWidget {
                 Expanded(
                   child: Container(
                     color: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 6.w,
-                      vertical: 2.h,
-                    ),
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -51,7 +46,7 @@ class ChatLocationView extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: 16.sp,
                             color: Color(0xFF333333),
                           ),
                         ),

@@ -242,6 +242,7 @@ class _ChatVoiceViewState extends State<ChatVoiceView> {
 
   @override
   void dispose() {
+    _voicePlaySubs?.cancel();
     super.dispose();
   }
 
@@ -275,15 +276,15 @@ class _ChatVoiceViewState extends State<ChatVoiceView> {
                 quarterTurns: turns,
                 child: Lottie.asset(
                   anim,
-                  height: 19.h,
-                  width: 18.w,
+                  height: 18,
+                  width: 18,
                   package: 'flutter_openim_widget',
                 ),
               )
             : Image.asset(
                 png,
-                height: 19.h,
-                width: 18.w,
+                height: 18,
+                width: 18,
                 package: 'flutter_openim_widget',
               ),
         Visibility(

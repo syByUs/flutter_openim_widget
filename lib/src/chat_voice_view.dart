@@ -233,7 +233,7 @@ class _ChatVoiceViewState extends State<ChatVoiceView> {
       if (!mounted) return;
       if (widget.msgId == event.msgId) {
         setState(() {
-          playing = !event.value;
+          playing = event.value;
         });
       }
     });

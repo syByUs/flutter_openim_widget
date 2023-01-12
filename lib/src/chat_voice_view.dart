@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_openim_widget/src/chat_itemview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
@@ -194,17 +195,21 @@ import 'package:lottie/lottie.dart';
 class ChatVoiceView extends StatefulWidget {
   final int index;
   final Stream<int>? clickStream;
+  final Stream<MsgStreamEv<bool>>? voicePlayStream;
   final bool isReceived;
   final String? soundPath;
   final String? soundUrl;
   final int? duration;
   final bool isPlaying;
+  final String msgId;
 
   const ChatVoiceView({
     Key? key,
+    required this.msgId,
     required this.index,
     required this.clickStream,
     required this.isReceived,
+    this.voicePlayStream,
     this.soundPath,
     this.soundUrl,
     this.duration,
@@ -216,8 +221,22 @@ class ChatVoiceView extends StatefulWidget {
 }
 
 class _ChatVoiceViewState extends State<ChatVoiceView> {
+
+  StreamSubscription? _voicePlaySubs;
+
+  late bool playing;
+
   @override
   void initState() {
+    playing = widget.isPlaying;
+    _voicePlaySubs = widget.voicePlayStream?.listen((event) {
+      if (!mounted) return;
+      if (widget.msgId == event.msgId) {
+        setState(() {
+          playing = !event.value;
+        });
+      }
+    });
     super.initState();
   }
 
@@ -232,11 +251,11 @@ class _ChatVoiceViewState extends State<ChatVoiceView> {
     var turns;
     if (widget.isReceived) {
       anim = 'assets/anim/voice_black.json';
-      png = 'assets/images/ic_voice_black.webp';
+      png = 'assets/images/ic_voice_black_left.webp';
       turns = 0;
     } else {
       anim = 'assets/anim/voice_blue.json';
-      png = 'assets/images/ic_voice_blue.webp';
+      png = 'assets/images/ic_voice_black_right.webp';
       turns = 90;
     }
     return Row(
@@ -251,7 +270,7 @@ class _ChatVoiceViewState extends State<ChatVoiceView> {
             ),
           ),
         ),
-        widget.isPlaying
+        playing
             ? RotatedBox(
                 quarterTurns: turns,
                 child: Lottie.asset(

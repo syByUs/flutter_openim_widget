@@ -88,6 +88,9 @@ class ChatItemView extends StatefulWidget {
   /// Download progress of pictures, videos, and files
   // final Subject<MsgStreamEv<int>> downloadProgressSubject;
 
+
+  final Subject<MsgStreamEv<bool>> voicePlaySubject;
+
   /// Style of text content
   /// 文字消息的样式，只针对文本消息，其他消息默认采用rightTextStyle
   final TextStyle? rightTextStyle;
@@ -279,6 +282,7 @@ class ChatItemView extends StatefulWidget {
     required this.clickSubject,
     required this.msgSendStatusSubject,
     required this.msgSendProgressSubject,
+    required this.voicePlaySubject,
     this.isBubbleMsg = true,
     this.leftBubbleColor = const Color(0xFFF0F0F0),
     this.rightBubbleColor = const Color(0xFFDCEBFE),
@@ -513,8 +517,10 @@ class _ChatItemViewState extends State<ChatItemView> {
             var sound = widget.message.soundElem;
             child = _buildCommonItemView(
               child: ChatVoiceView(
+                msgId: widget.message.clientMsgID!,
                 index: widget.index,
                 clickStream: widget.clickSubject.stream,
+                voicePlayStream: widget.voicePlaySubject.stream,
                 isReceived: _isFromMsg,
                 soundPath: sound?.soundPath,
                 soundUrl: sound?.sourceUrl,

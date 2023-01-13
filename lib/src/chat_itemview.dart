@@ -272,6 +272,8 @@ class ChatItemView extends StatefulWidget {
 
   /// 点击系统软键盘返回键关闭菜单
   final Subject<bool>? popPageCloseMenuSubject;
+  
+  final bool? isRead;
 
   const ChatItemView({
     Key? key,
@@ -348,6 +350,7 @@ class ChatItemView extends StatefulWidget {
     this.timeDecoration,
     this.timePadding,
     this.popPageCloseMenuSubject,
+    this.isRead,
   }) : super(key: key);
 
   @override
@@ -400,6 +403,7 @@ class _ChatItemViewState extends State<ChatItemView> {
         _popupCtrl.hideMenu();
       }
     });
+    
     super.initState();
   }
 
@@ -705,7 +709,7 @@ class _ChatItemViewState extends State<ChatItemView> {
         rightAvatar: widget.rightAvatarUrl ?? OpenIM.iMManager.uInfo.faceURL,
         leftAvatar: widget.leftAvatarUrl ?? widget.message.senderFaceUrl,
         leftName: widget.leftName ?? widget.message.senderNickname ?? '',
-        isUnread: !widget.message.isRead!,
+        isUnread: !(widget.isRead ?? widget.message.isRead!),
         leftBubbleColor: widget.leftBubbleColor,
         rightBubbleColor: widget.rightBubbleColor,
         onLongPressRightAvatar: widget.onLongPressRightAvatar,

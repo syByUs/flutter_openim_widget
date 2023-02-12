@@ -118,16 +118,18 @@ class ChatAvatarView extends StatelessWidget {
           width: _size,
           height: _size,
           fit: BoxFit.cover,
+          lowMemory: true,
           loadProgress: false,
-          cacheWidth: (1.sw * .3).toInt(),
+          cacheWidth: _size.toInt(),
         )
       : ImageUtil.networkImage(
           url: url!,
           width: _size,
           height: _size,
           fit: BoxFit.cover,
+          lowMemory: false,
           loadProgress: false,
-          cacheWidth: (1.sw * .3).toInt(),
+          cacheWidth: _size.toInt(),
         );
 
   Widget _nineGridAvatar() => Container(

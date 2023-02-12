@@ -252,7 +252,7 @@ class ImageUtil {
         url: url,
         width: width,
         height: height,
-        cacheWidth: cacheHeight,
+        cacheWidth: cacheWidth,
         cacheHeight: cacheHeight,
         fit: fit,
         loadProgress: loadProgress,
@@ -270,7 +270,7 @@ class ImageUtil {
     BoxFit? fit,
     bool loadProgress = true,
     bool clearMemoryCacheWhenDispose = false,
-    bool lowMemory = true,
+    bool lowMemory = false,
     Widget? errorWidget,
   }) =>
       lowMemoryNetworkImage(
@@ -378,6 +378,9 @@ class ImageUtil {
       );
 
   static int? _calculateCacheWidth(double? width) {
+    int ratio = ScreenUtil().pixelRatio?.toInt() ?? 2;
+    width = width ?? 48;
+    return width.toInt() * ratio;
     return (width == null ? 1.sw : (width < 1.sw ? width : 1.sw)).toInt();
   }
 }

@@ -3,14 +3,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_openim_widget/flutter_openim_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MenuInfo {
+class ChatMenuInfo {
   Widget icon;
   String text;
   TextStyle? textStyle;
   Function()? onTap;
   bool enabled;
 
-  MenuInfo({
+  ChatMenuInfo({
     required this.icon,
     required this.text,
     this.textStyle,
@@ -19,7 +19,7 @@ class MenuInfo {
   });
 }
 
-class MenuStyle {
+class ChatMenuStyle {
   final EdgeInsets padding;
   final int crossAxisCount;
   final double mainAxisSpacing;
@@ -27,7 +27,7 @@ class MenuStyle {
   final Color background;
   final double radius;
 
-  MenuStyle({
+  ChatMenuStyle({
     required this.crossAxisCount,
     required this.mainAxisSpacing,
     required this.crossAxisSpacing,
@@ -36,7 +36,7 @@ class MenuStyle {
     required this.padding,
   });
 
-  const MenuStyle.base()
+  const ChatMenuStyle.base()
       : crossAxisCount = 5,
         mainAxisSpacing = 20,
         crossAxisSpacing = 20,
@@ -47,14 +47,14 @@ class MenuStyle {
 
 class ChatLongPressMenu extends StatelessWidget {
   final CustomPopupMenuController controller;
-  final List<MenuInfo> menus;
-  final MenuStyle menuStyle;
+  final List<ChatMenuInfo> menus;
+  final ChatMenuStyle menuStyle;
 
   const ChatLongPressMenu({
     Key? key,
     required this.controller,
     required this.menus,
-    this.menuStyle = const MenuStyle.base(),
+    this.menuStyle = const ChatMenuStyle.base(),
   }) : super(key: key);
 
   @override

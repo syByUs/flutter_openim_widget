@@ -138,11 +138,11 @@ class ChatItemView extends StatefulWidget {
 
   /// long press menu list
   /// 长按消息起泡弹出的菜单列表
-  final List<MenuInfo>? menus;
+  final List<ChatMenuInfo>? menus;
 
   /// menu list style
   /// 菜单样式
-  final MenuStyle? menuStyle;
+  final ChatMenuStyle? menuStyle;
 
   ///
   final EdgeInsetsGeometry? padding;
@@ -740,7 +740,7 @@ class _ChatItemViewState extends State<ChatItemView> {
         controller: _popupCtrl,
         menus: widget.menus ?? _menusItem(),
         menuStyle: widget.menuStyle ??
-            MenuStyle(
+            ChatMenuStyle(
                 crossAxisCount: 5,
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
@@ -769,56 +769,56 @@ class _ChatItemViewState extends State<ChatItemView> {
         ),
       );
 
-  List<MenuInfo> _menusItem() => [
-        MenuInfo(
+  List<ChatMenuInfo> _menusItem() => [
+        ChatMenuInfo(
           icon: ImageUtil.menuCopy(),
           text: UILocalizations.copy,
           enabled: widget.enabledCopyMenu,
           textStyle: menuTextStyle,
           onTap: widget.onTapCopyMenu,
         ),
-        MenuInfo(
+        ChatMenuInfo(
           icon: ImageUtil.menuDel(),
           text: UILocalizations.delete,
           enabled: widget.enabledDelMenu,
           textStyle: menuTextStyle,
           onTap: widget.onTapDelMenu,
         ),
-        MenuInfo(
+        ChatMenuInfo(
           icon: ImageUtil.menuForward(),
           text: UILocalizations.forward,
           enabled: widget.enabledForwardMenu,
           textStyle: menuTextStyle,
           onTap: widget.onTapForwardMenu,
         ),
-        MenuInfo(
+        ChatMenuInfo(
           icon: ImageUtil.menuReply(),
           text: UILocalizations.reply,
           enabled: widget.enabledReplyMenu,
           textStyle: menuTextStyle,
           onTap: widget.onTapReplyMenu,
         ),
-        MenuInfo(
+        ChatMenuInfo(
             icon: ImageUtil.menuRevoke(),
             text: UILocalizations.revoke,
             enabled: widget.enabledRevokeMenu,
             textStyle: menuTextStyle,
             onTap: widget.onTapRevokeMenu),
-        MenuInfo(
+        ChatMenuInfo(
           icon: ImageUtil.menuMultiChoice(),
           text: UILocalizations.multiChoice,
           enabled: widget.enabledMultiMenu,
           textStyle: menuTextStyle,
           onTap: widget.onTapMultiMenu,
         ),
-        MenuInfo(
+        ChatMenuInfo(
           icon: ImageUtil.menuTranslation(),
           text: UILocalizations.translation,
           enabled: widget.enabledTranslationMenu,
           textStyle: menuTextStyle,
           onTap: widget.onTapTranslationMenu,
         ),
-        MenuInfo(
+        ChatMenuInfo(
           icon: ImageUtil.menuAddEmoji(),
           text: UILocalizations.add,
           enabled: widget.enabledAddEmojiMenu,
